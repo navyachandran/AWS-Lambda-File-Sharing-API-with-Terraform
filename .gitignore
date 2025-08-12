@@ -1,0 +1,13 @@
+echo ".terraform/
+*.tfstate
+*.tfstate.backup
+*.zip
+.env
+__pycache__/
+*.pyc
+uploads/
+files.db
+venv/
+" > .gitignore
+
+
