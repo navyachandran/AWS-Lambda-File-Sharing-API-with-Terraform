@@ -1,9 +1,9 @@
-#AWS-Lambda-File-Sharing-API-with-Terraform
+AWS-Lambda-File-Sharing-API-with-Terraform
 
 Steps to Run, Deploy, and Test the AWS File API
+
 1. Prerequisites
 AWS account with programmatic access (Access Key & Secret Key).
-
 AWS CLI installed and configured:
 
 bash comment:
@@ -35,7 +35,6 @@ terraform apply -auto-approve
 
 d.After apply completes, note the output api_url — this is your API Gateway endpoint.
 
-
 4. Test the API
 API="https://quzmpugml4.execute-api.eu-west-1.amazonaws.com" (USE THE PROPER URL)
 
@@ -59,8 +58,6 @@ curl -s "$API/files" | jq .
 d.Get Download URL for a File
 FILE_ID="be2220e0-0c6f-4c32-89c5-e2eb6ed4d43a"
 curl -s "$API/files/$FILE_ID" | jq .
-
-
 
 e.Test Non-ASCII Filename
 curl -s -X POST "$API/upload" \
@@ -86,17 +83,13 @@ curl -s -X POST "<API_URL>/upload" \
   -H "Content-Type: application/json" \
   -d "{\"file_name\":\"test_21mb.bin\",\"file_content\":\"$(base64 test_21mb.bin)\",\"content_type\":\"application/octet-stream\"}"
 
-
-
 6. Verify in AWS Console
 Lambda: Function api-handler (your code).
 API Gateway: HTTP API file-api.
 S3: Bucket containing uploaded files.
 DynamoDB: Table files-table storing metadata.
 
-
 7. Remove Resources
-
 When done testing, destroy resources to avoid AWS costs:
 
 cd terraform
